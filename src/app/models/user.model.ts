@@ -14,6 +14,6 @@ export class User extends BaseEntity {
   @Column({ length: 100 })
   password!: string;
 
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   gtoken!: string;
 }
