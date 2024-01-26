@@ -6,7 +6,6 @@ import { encryptPassword } from '../services/auth.service';
 export async function createUser(req: IUserCreateRequest, res: Response) {
   try {
     let user: IUserRequest = req.body;
-    console.log(user);
     const userExists = await User.findOneBy({ email: user.email });
     if (userExists) {
       res.status(200).json({ message: 'User already exists' });
@@ -19,7 +18,7 @@ export async function createUser(req: IUserCreateRequest, res: Response) {
       res.status(200).json({ message: 'New user created' });
     }
   } catch (error) {
-    console.log('Error create user: ', error);
+    console.error('Error create user: ', error);
     res.status(400).json({ message: 'Error create user' });
   }
 }

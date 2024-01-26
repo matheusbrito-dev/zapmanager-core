@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  BaseEntity,
+  OneToOne,
+} from 'typeorm';
+import { RefreshToken } from './refreshToken.model';
 
 @Entity()
 export class User extends BaseEntity {
@@ -14,6 +21,6 @@ export class User extends BaseEntity {
   @Column({ length: 100 })
   password!: string;
 
-  @Column({ length: 100, nullable: true })
-  gtoken!: string;
+  @OneToOne(() => RefreshToken, (refreshToken) => refreshToken.uuid)
+  refreshToken: RefreshToken;
 }
