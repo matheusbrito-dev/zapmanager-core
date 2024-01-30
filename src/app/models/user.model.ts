@@ -4,8 +4,10 @@ import {
   Column,
   BaseEntity,
   OneToOne,
+  ManyToOne,
 } from 'typeorm';
 import { RefreshToken } from './refreshToken.model';
+import { UserType } from './userType.model';
 
 @Entity()
 export class User extends BaseEntity {
@@ -23,4 +25,7 @@ export class User extends BaseEntity {
 
   @OneToOne(() => RefreshToken, (refreshToken) => refreshToken.uuid)
   refreshToken: RefreshToken;
+
+  @ManyToOne(() => UserType, (userType) => userType.type)
+  type!: UserType[];
 }

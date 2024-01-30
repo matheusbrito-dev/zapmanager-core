@@ -2,7 +2,6 @@ export interface IUserRequest {
   name: string;
   email: string;
   password: string;
-  gtoken: string;
 }
 
 export interface IUserAuth {
@@ -14,6 +13,5 @@ export interface IUserCreateRequest extends Express.Request {
     name: string;
     email: string;
     password: string;
-    gtoken: string;
   };
 }
